@@ -1,11 +1,14 @@
 {
-  "name": "couchdb_designdocs",
-  "version": "1.0.0",
-  "description": "This package will help you sync the design documents from one couchdb to another",
-  "main": "index.js",
-  "scripts": {
-    "test": "node test.js"
-  },
-  "author": "",
-  "license": "ISC"
+	"name": "couchdb_designdocs",
+	"version": "1.0.0",
+	"description": "This package will help you sync the design documents from one couchdb to another",
+	"main": "index.js",
+	"scripts": {
+		"test": "node test.js"
+	},
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"sync-request": "latest"
+	}
 }
