@@ -1,6 +1,6 @@
 {
 	"name": "couchdb_utilities",
-	"version": "7a8a16fcdd94ce19127feecef23fc50d6e4d7fda",
+	"version": "v1.0.4",
 	"description": "This package will help you sync the design documents from one couchdb to another",
 	"main": "index.js",
 	"scripts": {
