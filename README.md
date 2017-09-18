@@ -12,6 +12,16 @@ var couchUtils = require('couchdb_utilities');
 #### Validate connection - Source
 #### Validate Connection - target
 #### Get list of Dbs in the Source
+
+```
+console.log( couchUtils.listDatabases( "http://0.0.0.0:5984" ) );
+[
+    "_replicator",
+    "_users",
+    "test2"
+]
+```
+
 #### Check if the view exist
 #### Check db in the target
 #### Create db in target
