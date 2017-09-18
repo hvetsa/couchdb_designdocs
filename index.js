@@ -8,10 +8,44 @@ exports.checkDB = function ( couchURL, databaseName ) {
     return JSON.parse ( Obj.responseString);
 };
 
+// server Utilities
+
+exports.validateConnection = function ( couchURL ) {
+    var couchDBURL = couchURL;
+    Obj = this.returnObjfromURL(couchDBURL);
+    if ( Obj.responseCode == 200 ) {
+        return true;
+    } else {
+        return false;
+    }
+};
+
+exports.getServerVersion = function ( couchURL ) {
+    var couchDBURL = couchURL;
+    Obj = this.returnObjfromURL(couchDBURL);
+    if ( Obj.responseCode == 200 ) {
+        return JSON.parse( Obj.responseString).version;
+    } else {
+        return false;
+    }
+};
+
+exports.responseDuration = function ( couchURL ) {
+    var couchDBURL = couchURL;
+    Obj = this.returnObjfromURL(couchDBURL);
+    if ( Obj.responseCode == 200 ) {
+        return Obj.duration;
+    } else {
+        return false;
+    }
+};
+
+// database Utilities
+
 exports.listDatabases = function ( couchURL ) {
     var couchDBURL = couchURL + "/" + "_all_dbs";
     Obj = this.returnObjfromURL(couchDBURL);
-    return JSON.parse ( Obj.responseString);
+    return JSON.parse( Obj.responseString);
 };
 
 
@@ -37,6 +71,8 @@ exports.createDatabase = function ( couchURL, databaseName ) {
     }
 };
 
+
+// Internal Methods
 exports.returnObjfromURL = function ( URL ) {
 
     var returnObj = {}
