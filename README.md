@@ -39,8 +39,10 @@ var Boolean = couchUtils.createDatabase( "http://0.0.0.0:5984", "test" ) );
 var Object = couchUtils.getDatabaseDetails( "http://0.0.0.0:5984", "test" ) );
 ```
 
-
-
+### Design Document Utilities
+```
+var Array = couchUtils.getDesignDocuments = function ( couchURL, databaseName ) {
+```
 
 #### Check if the view exist
 ### Design Docs

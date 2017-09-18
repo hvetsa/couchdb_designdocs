@@ -72,6 +72,20 @@ exports.getDatabaseDetails = function ( couchURL, databaseName ) {
     return JSON.parse( Obj.responseString);
 };
 
+// Design Document Utilities
+exports.getDesignDocuments = function ( couchURL, databaseName ) {
+    var couchDBURL = couchURL + "/" + databaseName + "/_all_docs?startkey=\"_design/\"&endkey=\"_design0\"&include_docs=true";
+    Obj = this.returnObjfromURL(couchDBURL);
+    Obj.rows = [ ];
+    records = JSON.parse(Obj.responseString).rows;
+    for ( Counter = 0; Counter < records.length; Counter++ ) {
+        Obj.rows.push( records[Counter].doc );
+    }
+    return Obj.rows;
+};
+
+
+
 
 // Internal Methods
 exports.returnObjfromURL = function ( URL ) {
