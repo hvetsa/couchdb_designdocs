@@ -1,12 +1,20 @@
-
 exports.printMsg = function() {
-  console.log("This is a message from the demo package");
+    console.log("This is a message from the demo package");
 };
 
 exports.checkDB = function ( couchURL, databaseName ) {
-	var couchDBURL = couchURL + "/" + databaseName;
-  return this.returnObjfromURL(couchDBURL);
+    var couchDBURL = couchURL + "/" + databaseName;
+    Obj = this.returnObjfromURL(couchDBURL);
+    return JSON.parse ( Obj.responseString);
 };
+
+exports.listDatabases = function ( couchURL ) {
+    var couchDBURL = couchURL + "/" + "_all_dbs";
+    Obj = this.returnObjfromURL(couchDBURL);
+    return JSON.parse ( Obj.responseString);
+};
+
+
 
 
 exports.returnObjfromURL = function ( URL ) {
