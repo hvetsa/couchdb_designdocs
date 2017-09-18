@@ -2,11 +2,6 @@ exports.printMsg = function() {
     console.log("This is a message from the demo package");
 };
 
-exports.checkDB = function ( couchURL, databaseName ) {
-    var couchDBURL = couchURL + "/" + databaseName;
-    Obj = this.returnObjfromURL(couchDBURL);
-    return JSON.parse ( Obj.responseString);
-};
 
 // server Utilities
 
@@ -69,6 +64,12 @@ exports.createDatabase = function ( couchURL, databaseName ) {
     } else {
         return false;
     }
+};
+
+exports.getDatabaseDetails = function ( couchURL, databaseName ) {
+    var couchDBURL = couchURL + "/" + databaseName;
+    Obj = this.returnObjfromURL(couchDBURL);
+    return JSON.parse( Obj.responseString);
 };
 
 

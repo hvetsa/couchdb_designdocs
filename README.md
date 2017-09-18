@@ -23,7 +23,6 @@ var String = couchUtils.responseDuration ( "http://0.0.0.0:5984" ) );
 
 ### Database Utilities
 #### Get list of databases
-
 ```
 var Array = couchUtils.listDatabases( "http://0.0.0.0:5984" ) );
 ```
@@ -35,6 +34,11 @@ var Boolean = couchUtils.databaseExists( "http://0.0.0.0:5984", "test" ) );
 ```
 var Boolean = couchUtils.createDatabase( "http://0.0.0.0:5984", "test" ) );
 ```
+#### Obtain details of a database
+```
+var Object = couchUtils.getDatabaseDetails( "http://0.0.0.0:5984", "test" ) );
+```
+
 
 
 
