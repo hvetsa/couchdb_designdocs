@@ -7,15 +7,22 @@ Invocation of the module
 var couchUtils = require('couchdb_utilities');
 ```
 
+### Server Utilities
+
+
 ### Database Utilities
-#### Get list of Dbs in the Source
+#### Get list of databases
 
 ```
 var Array = couchUtils.listDatabases( "http://0.0.0.0:5984" ) );
 ```
-#### Check db in the target
+#### Check if a database exists in the target
 ```
-var Boolean = couchUtils.listDatabases( "http://0.0.0.0:5984", "test" ) );
+var Boolean = couchUtils.databaseExists( "http://0.0.0.0:5984", "test" ) );
+```
+#### Create a database in target
+```
+var Boolean = couchUtils.createDatabase( "http://0.0.0.0:5984", "test" ) );
 ```
 
 
@@ -25,7 +32,6 @@ var Boolean = couchUtils.listDatabases( "http://0.0.0.0:5984", "test" ) );
 #### Validate Connection - target
 
 #### Check if the view exist
-#### Create db in target
 
 ### Design Docs
 #### Create view
