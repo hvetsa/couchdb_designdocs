@@ -23,7 +23,9 @@ exports.returnObjfromURL = function ( URL ) {
 
     var responseString = response.getBody('utf8');
 
-    returnObj.responseCode = statusCode;
+    returnObj.responseCode = response.getBody('utf8');
     returnObj.responseString = responseString;
+    
+    return returnObj;
     
 };

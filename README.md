@@ -1,4 +1,9 @@
-# couchdb_utils
+# couchdb_utilities
+
+Invocation of the module
+```
+var couchUtils = require('couchdb_utilities');
+```
 
 ### Core
 #### Verify Inputs
