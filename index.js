@@ -15,7 +15,16 @@ exports.listDatabases = function ( couchURL ) {
 };
 
 
+exports.databaseExists = function ( couchURL, databaseName ) {
+    var couchDBURL = couchURL + "/" + databaseName;
+    Obj = this.returnObjfromURL(couchDBURL);
 
+    if ( Obj.responseCode == 404 ) {
+        return false;
+    } else {
+        return true;
+    }
+};
 
 exports.returnObjfromURL = function ( URL ) {
 
@@ -29,9 +38,9 @@ exports.returnObjfromURL = function ( URL ) {
     returnObj.duration = returnObj.endTime - returnObj.startTime;
     returnObj.duration = returnObj.duration + " milliseconds"
 
-    var responseString = response.getBody('utf8');
+    var responseString = response.body.toString('utf8');
 
-    returnObj.responseCode = response.getBody('utf8');
+    returnObj.responseCode = response.statusCode;
     returnObj.responseString = responseString;
     
     return returnObj;

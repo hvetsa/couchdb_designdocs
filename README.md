@@ -7,23 +7,24 @@ Invocation of the module
 var couchUtils = require('couchdb_utilities');
 ```
 
+### Database Utilities
+#### Get list of Dbs in the Source
+
+```
+var Array = couchUtils.listDatabases( "http://0.0.0.0:5984" ) );
+```
+#### Check db in the target
+```
+var Boolean = couchUtils.listDatabases( "http://0.0.0.0:5984", "test" ) );
+```
+
+
 ### Core
 #### Verify Inputs
 #### Validate connection - Source
 #### Validate Connection - target
-#### Get list of Dbs in the Source
-
-```
-console.log( couchUtils.listDatabases( "http://0.0.0.0:5984" ) );
-[
-    "_replicator",
-    "_users",
-    "test2"
-]
-```
 
 #### Check if the view exist
-#### Check db in the target
 #### Create db in target
 
 ### Design Docs
