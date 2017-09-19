@@ -10,44 +10,63 @@ var couchUtils = require('couchdb_utilities');
 ### Server Utilities
 #### Validate the input connection string
 ```
-var Boolean = couchUtils.validateConnection ( "http://0.0.0.0:5984" ) );
+var Boolean = couchUtils.validateConnection ( couchURL ) );
 ```
 #### Validate the input connection string
 ```
-var String = couchUtils.getServerVersion ( "http://0.0.0.0:5984" ) );
+var String = couchUtils.getServerVersion ( couchURL ) );
 ```
 #### Validate the input connection string
 ```
-var String = couchUtils.responseDuration ( "http://0.0.0.0:5984" ) );
+var String = couchUtils.responseDuration ( couchURL ) );
 ```
 
 ### Database Utilities
 #### Get list of databases
 ```
-var Array = couchUtils.listDatabases( "http://0.0.0.0:5984" ) );
+var Array = couchUtils.listDatabases( couchURL ) );
 ```
 #### Check if a database exists in the target
 ```
-var Boolean = couchUtils.databaseExists( "http://0.0.0.0:5984", "test" ) );
+var Boolean = couchUtils.databaseExists( couchURL, "test" ) );
 ```
 #### Create a database in target
 ```
-var Boolean = couchUtils.createDatabase( "http://0.0.0.0:5984", "test" ) );
+var Boolean = couchUtils.createDatabase( couchURL, "test" ) );
+```
+#### Delete a database in target
+```
+var Boolean = couchUtils.deleteDatabase( couchURL, "test" ) );
 ```
 #### Obtain details of a database
 ```
-var Object = couchUtils.getDatabaseDetails( "http://0.0.0.0:5984", "test" ) );
+var Object = couchUtils.getDatabaseDetails( couchURL, "test" ) );
 ```
 
 ### Design Document Utilities
 ```
-var Array = couchUtils.getDesignDocuments = function ( couchURL, databaseName ) {
+var Array = couchUtils.getDesignDocuments ( couchURL, databaseName ) {
 ```
+
+### Document Utilities
+#### get a document by ID
+```
+var Object = couchUtils.getDocumentbyID ( couchURL, databaseName, docID ) {
+```
+#### create a Document
+```
+var Boolean = couchUtils.createDocument( couchURL, databaseName, jsonString ) {
+```
+#### delete a Document
+```
+var Boolean = couchUtils.deleteDocument( couchURL, databaseName, docID ) {
+```
+
 
 #### Check if the view exist
 ### Design Docs
 #### Create view
-#### Get design Docs in a db
+
 #### Check Views in target
 #### Delete design docs in target db
 #### Create Design docs in target

@@ -66,6 +66,17 @@ exports.createDatabase = function ( couchURL, databaseName ) {
     }
 };
 
+exports.deleteDatabase = function ( couchURL, databaseName ) {
+    var couchDBURL = couchURL + "/" + databaseName;
+    Obj = this.callURL("DELETE", couchDBURL, null );
+
+    if ( JSON.parse( Obj.responseString).ok == true ) {
+        return true;
+    } else {
+        return false;
+    }
+};
+
 exports.getDatabaseDetails = function ( couchURL, databaseName ) {
     var couchDBURL = couchURL + "/" + databaseName;
     Obj = this.returnObjfromURL(couchDBURL);
@@ -84,8 +95,42 @@ exports.getDesignDocuments = function ( couchURL, databaseName ) {
     return Obj.rows;
 };
 
+// Design Document Utilities
+exports.getDocumentbyID = function ( couchURL, databaseName, docID ) {
+    var couchDBURL = couchURL + "/" + databaseName + "/" + docID;
+    Obj = this.returnObjfromURL(couchDBURL);
+    
+    return JSON.parse(Obj.responseString);
+};
 
+exports.createDocument = function ( couchURL, databaseName, document ) {
+    var couchDBURL = couchURL + "/" + databaseName;
+    var jsonPayload = {
+        json: document
+    };
+    Obj = this.callURL("POST", couchDBURL, document );
+    
+    if ( JSON.parse( Obj.responseString).ok == true ) {
+        return true;
+    } else {
+        return false;
+    }
+};
 
+exports.deleteDocument = function ( couchURL, databaseName, docID ) {
+    var couchDBURL = couchURL + "/" + databaseName;
+    // var document = this.getDocumentbyID( couchURL, databaseName, docID );
+    var rev = this.getDocumentbyID( couchURL, databaseName, docID )._rev;
+    couchDBURL = couchURL + "/" + databaseName + "/" + docID + "?rev=" + rev;
+    
+    Obj = this.callURL("DELETE", couchDBURL, null );
+    
+    if ( JSON.parse( Obj.responseString).ok == true ) {
+        return true;
+    } else {
+        return false;
+    }
+};
 
 // Internal Methods
 exports.returnObjfromURL = function ( URL ) {
@@ -113,7 +158,9 @@ exports.callURL = function ( Method, URL, Payload ) {
     
         var returnObj = {}
         var syncRequest = require('sync-request');
-        var jsonPayload = { json: Payload };
+        var jsonPayload = { 
+            json: JSON.parse( Payload ) 
+        };
         
         returnObj.startTime = (new Date).getTime();
         var response = syncRequest(Method, URL, jsonPayload );

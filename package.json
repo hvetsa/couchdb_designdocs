@@ -1,12 +1,17 @@
 {
 	"name": "couchdb_utilities",
-	"version": "v1.0.9prerelease",
-	"description": "This package will help you sync the design documents from one couchdb to another",
+	"version": "v1.0.10prerelease",
+	"description": "This package contains utilties to use and support couchdb environments.",
 	"main": "index.js",
 	"scripts": {
 		"test": "node test.js"
 	},
-	"author": "",
+	"author": {
+		"name": "Hari Vetsa"
+	},
+	"bugs": {
+		"url": "https://github.com/hvetsa/couchdb_utilities"
+	},
 	"license": "ISC",
 	"dependencies": {
 		"sync-request": "latest"
