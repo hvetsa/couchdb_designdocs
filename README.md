@@ -87,12 +87,3 @@ var Boolean = couchUtils.createDocument( couchURL, databaseName, jsonString ) {
 ```
 var Boolean = couchUtils.deleteDocument( couchURL, databaseName, docID ) {
 ```
-
-
-#### Check if the view exist
-### Design Docs
-#### Create view
-
-#### Check Views in target
-#### Delete design docs in target db
-#### Create Design docs in target
