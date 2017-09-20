@@ -2,9 +2,35 @@
 
 # couchdb_utilities
 
-Invocation of the module
+### Invocation of the module
 ```
 var couchUtils = require('couchdb_utilities');
+```
+
+### Simple program
+A simple program to obtain the size of all databases in a couchdb account will look like this
+```
+var couchUtils = require('couchdb_utilities');
+
+var CouchURL = process.env.CouchURL;
+var outputString = "";
+
+var databases = couchUtils.listDatabases( CouchURL );
+outputString = outputString +  "DatabaseName" + "," + "DatabaseSize(Bytes)" + "\n";
+for ( Counter = 0; Counter < databases.length; Counter++ ) {
+    outputString = outputString +  databases[Counter] + "," + couchUtils.getDatabaseDetails( CouchURL, databases[Counter] ).disk_size + "\n";
+}
+console.log(outputString);
+
+$ node getDatabaseSize.js 
+DatabaseName,DatabaseSize(Bytes)
+development,1123012
+preproduction,594596
+production,594596
+test,66352
+test2,17032
+test_backup,66352
+$
 ```
 
 ### Server Utilities
@@ -61,12 +87,3 @@ var Boolean = couchUtils.createDocument( couchURL, databaseName, jsonString ) {
 ```
 var Boolean = couchUtils.deleteDocument( couchURL, databaseName, docID ) {
 ```
-
-
-#### Check if the view exist
-### Design Docs
-#### Create view
-
-#### Check Views in target
-#### Delete design docs in target db
-#### Create Design docs in target
