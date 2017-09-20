@@ -154,26 +154,31 @@ exports.returnObjfromURL = function ( URL ) {
     
 };
 
-exports.callURL = function ( Method, URL, Payload ) {
+exports.callURL = function ( Method, URL, Payload, headers ) {
     
-        var returnObj = {}
-        var syncRequest = require('sync-request');
-        var jsonPayload = { 
-            json: JSON.parse( Payload ) 
-        };
+    var returnObj = {}
+    var syncRequest = require('sync-request');
+    if ( ! headers ) {
+        var headers = { "Content-Type": "application/json" };
+    }
+
+    var jsonPayload = {
+        headers: headers,
+        body: Payload 
+    };
         
-        returnObj.startTime = (new Date).getTime();
-        var response = syncRequest(Method, URL, jsonPayload );
-        returnObj.endTime = (new Date).getTime();
+    returnObj.startTime = (new Date).getTime();
+    var response = syncRequest(Method, URL, jsonPayload );
+    returnObj.endTime = (new Date).getTime();
     
-        returnObj.duration = returnObj.endTime - returnObj.startTime;
-        returnObj.duration = returnObj.duration + " milliseconds"
+    returnObj.duration = returnObj.endTime - returnObj.startTime;
+    returnObj.duration = returnObj.duration + " milliseconds"
     
-        var responseString = response.body.toString('utf8');
+    var responseString = response.body.toString('utf8');
     
-        returnObj.responseCode = response.statusCode;
-        returnObj.responseString = responseString;
+    returnObj.responseCode = response.statusCode;
+    returnObj.responseString = responseString;
         
-        return returnObj;
+    return returnObj;
         
     };
