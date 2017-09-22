@@ -133,6 +133,20 @@ exports.createDocument = function ( couchURL, databaseName, document ) {
     }
 }; //createDocument
 
+exports.updateDocument = function ( couchURL, databaseName, document ) {
+    var couchDBURL = couchURL + "/" + databaseName + "/" + JSON.parse( document )._id;
+    var jsonPayload = {
+        json: document
+    };
+    Obj = this.callURL("PUT", couchDBURL, document );
+
+    if ( JSON.parse( Obj.responseString).ok == true ) {
+        return true;
+    } else {
+        return false;
+    }
+}; //updateDocument
+
 exports.deleteDocument = function ( couchURL, databaseName, docID ) {
     var couchDBURL = couchURL + "/" + databaseName;
     var rev = this.getDocumentbyID( couchURL, databaseName, docID )._rev;

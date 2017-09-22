@@ -86,6 +86,10 @@ var Object = couchUtils.getDocumentsUsingQuery( couchURL, databaseName, queryStr
 ```
 var Boolean = couchUtils.createDocument( couchURL, databaseName, jsonString );
 ```
+#### Update a Document
+```
+var Boolean = couchUtils.updateDocument( couchURL, databaseName, jsonString );
+```
 #### delete a Document
 ```
 var Boolean = couchUtils.deleteDocument( couchURL, databaseName, docID );

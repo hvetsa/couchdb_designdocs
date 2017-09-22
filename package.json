@@ -1,6 +1,6 @@
 {
 	"name": "couchdb_utilities",
-	"version": "v1.0.11",
+	"version": "v1.0.12",
 	"description": "This package contains utilties to use and support couchdb environments.",
 	"main": "index.js",
 	"scripts": {

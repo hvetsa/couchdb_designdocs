@@ -43,6 +43,19 @@ console.log( couchUtils.createDocument( CouchURL, "test", '{"_id": "doc2", "okxb
 console.log( couchUtils.getDocumentbyID( CouchURL, "test", "doc1" ) );
 console.log( couchUtils.getDocumentbyID( CouchURL, "test", "doc2" ) );
 
+console.log("***********updateDocument**************");
+console.log( couchUtils.getDocumentbyID( CouchURL, "test", "updateDocumentTest" ) );
+console.log( couchUtils.createDocument( CouchURL, "test", '{"_id": "updateDocumentTest", "revision": "One"}' ) );
+console.log( couchUtils.getDocumentbyID( CouchURL, "test", "updateDocumentTest" ) );
+Obj = couchUtils.getDocumentbyID( CouchURL, "test", "updateDocumentTest" );
+Obj.revision = "Two";
+console.log( couchUtils.updateDocument( CouchURL, "test", JSON.stringify ( Obj ) ) );
+console.log( couchUtils.getDocumentbyID( CouchURL, "test", "updateDocumentTest" ) );
+console.log( couchUtils.deleteDocument( CouchURL, "test", "updateDocumentTest" ) );
+console.log( couchUtils.getDocumentbyID( CouchURL, "test", "updateDocumentTest" ) );
+
+
+
 console.log("***********deleteDocument**************");
 console.log( couchUtils.createDocument( CouchURL, "test", '{"_id": "doc3", "okxbabc": "bkjdfbakj"}' ) );
 console.log( couchUtils.getDocumentbyID( CouchURL, "test", "doc3" ) );
