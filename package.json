@@ -1,6 +1,6 @@
 {
 	"name": "couchdb_utilities",
-	"version": "v1.0.11prerelease",
+	"version": "v1.0.11",
 	"description": "This package contains utilties to use and support couchdb environments.",
 	"main": "index.js",
 	"scripts": {
@@ -10,7 +10,7 @@
 		"name": "Hari Vetsa"
 	},
 	"bugs": {
-		"url": "https://github.com/hvetsa/couchdb_utilities"
+		"url": "https://github.com/hvetsa/couchdb_utilities/issues"
 	},
 	"license": "ISC",
 	"dependencies": {

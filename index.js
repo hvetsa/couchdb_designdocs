@@ -13,7 +13,7 @@ exports.validateConnection = function ( couchURL ) {
     } else {
         return false;
     }
-};
+}; //validateConnection
 
 exports.getServerVersion = function ( couchURL ) {
     var couchDBURL = couchURL;
@@ -23,7 +23,7 @@ exports.getServerVersion = function ( couchURL ) {
     } else {
         return false;
     }
-};
+}; //getServerVersion
 
 exports.responseDuration = function ( couchURL ) {
     var couchDBURL = couchURL;
@@ -33,7 +33,7 @@ exports.responseDuration = function ( couchURL ) {
     } else {
         return false;
     }
-};
+}; //responseDuration
 
 // database Utilities
 
@@ -41,7 +41,7 @@ exports.listDatabases = function ( couchURL ) {
     var couchDBURL = couchURL + "/" + "_all_dbs";
     Obj = this.returnObjfromURL(couchDBURL);
     return JSON.parse( Obj.responseString);
-};
+}; //listDatabases
 
 
 exports.databaseExists = function ( couchURL, databaseName ) {
@@ -53,7 +53,7 @@ exports.databaseExists = function ( couchURL, databaseName ) {
     } else {
         return true;
     }
-};
+}; //databaseExists
 
 exports.createDatabase = function ( couchURL, databaseName ) {
     var couchDBURL = couchURL + "/" + databaseName;
@@ -64,7 +64,7 @@ exports.createDatabase = function ( couchURL, databaseName ) {
     } else {
         return false;
     }
-};
+}; //createDatabase
 
 exports.deleteDatabase = function ( couchURL, databaseName ) {
     var couchDBURL = couchURL + "/" + databaseName;
@@ -75,13 +75,13 @@ exports.deleteDatabase = function ( couchURL, databaseName ) {
     } else {
         return false;
     }
-};
+}; // deleteDatabase
 
 exports.getDatabaseDetails = function ( couchURL, databaseName ) {
     var couchDBURL = couchURL + "/" + databaseName;
     Obj = this.returnObjfromURL(couchDBURL);
     return JSON.parse( Obj.responseString);
-};
+}; //getDatabaseDetails
 
 // Design Document Utilities
 exports.getDesignDocuments = function ( couchURL, databaseName ) {
@@ -93,7 +93,7 @@ exports.getDesignDocuments = function ( couchURL, databaseName ) {
         Obj.rows.push( records[Counter].doc );
     }
     return Obj.rows;
-};
+}; //getDesignDocuments
 
 // Design Document Utilities
 exports.getDocumentbyID = function ( couchURL, databaseName, docID ) {
@@ -101,7 +101,23 @@ exports.getDocumentbyID = function ( couchURL, databaseName, docID ) {
     Obj = this.returnObjfromURL(couchDBURL);
     
     return JSON.parse(Obj.responseString);
-};
+}; //getDocumentbyID
+
+exports.getDocumentsUsingQuery = function ( couchURL, databaseName, queryString ) {
+    var returnDocuments = [ ];
+    var couchDBURL = couchURL + "/" + databaseName + "/" + queryString;
+    Obj = this.returnObjfromURL(couchDBURL);
+    console.log(Obj);
+    if ( Obj.responseCode == 404 ){
+        return false;
+    }
+    rows = JSON.parse ( Obj.responseString ).rows;
+    for ( Counter = 0; Counter < rows.length; Counter++ ) {
+        returnDocuments.push( rows[Counter].doc );
+    }
+
+    return returnDocuments;
+}; //getDocumentsUsingQuery
 
 exports.createDocument = function ( couchURL, databaseName, document ) {
     var couchDBURL = couchURL + "/" + databaseName;
@@ -115,11 +131,10 @@ exports.createDocument = function ( couchURL, databaseName, document ) {
     } else {
         return false;
     }
-};
+}; //createDocument
 
 exports.deleteDocument = function ( couchURL, databaseName, docID ) {
     var couchDBURL = couchURL + "/" + databaseName;
-    // var document = this.getDocumentbyID( couchURL, databaseName, docID );
     var rev = this.getDocumentbyID( couchURL, databaseName, docID )._rev;
     couchDBURL = couchURL + "/" + databaseName + "/" + docID + "?rev=" + rev;
     
@@ -130,7 +145,7 @@ exports.deleteDocument = function ( couchURL, databaseName, docID ) {
     } else {
         return false;
     }
-};
+}; //deleteDocument
 
 // Internal Methods
 exports.returnObjfromURL = function ( URL ) {
@@ -152,7 +167,7 @@ exports.returnObjfromURL = function ( URL ) {
     
     return returnObj;
     
-};
+}; // returnObjfromURL
 
 exports.callURL = function ( Method, URL, Payload, headers ) {
     
@@ -180,5 +195,4 @@ exports.callURL = function ( Method, URL, Payload, headers ) {
     returnObj.responseString = responseString;
         
     return returnObj;
-        
-    };
+}; // callURL

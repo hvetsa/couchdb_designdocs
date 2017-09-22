@@ -68,22 +68,25 @@ var Boolean = couchUtils.deleteDatabase( couchURL, "test" ) );
 ```
 var Object = couchUtils.getDatabaseDetails( couchURL, "test" ) );
 ```
-
 ### Design Document Utilities
 ```
-var Array = couchUtils.getDesignDocuments ( couchURL, databaseName ) {
+var Array = couchUtils.getDesignDocuments ( couchURL, databaseName );
 ```
 
 ### Document Utilities
 #### get a document by ID
 ```
-var Object = couchUtils.getDocumentbyID ( couchURL, databaseName, docID ) {
+var Object = couchUtils.getDocumentbyID ( couchURL, databaseName, docID );
+```
+#### get a document using Query
+```
+var Object = couchUtils.getDocumentsUsingQuery( couchURL, databaseName, queryString );
 ```
 #### create a Document
 ```
-var Boolean = couchUtils.createDocument( couchURL, databaseName, jsonString ) {
+var Boolean = couchUtils.createDocument( couchURL, databaseName, jsonString );
 ```
 #### delete a Document
 ```
-var Boolean = couchUtils.deleteDocument( couchURL, databaseName, docID ) {
+var Boolean = couchUtils.deleteDocument( couchURL, databaseName, docID );
 ```
